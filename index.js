@@ -8,14 +8,6 @@ const https = require('https');
 const url = require('url');
 const StringDecoder = require('string_decoder').StringDecoder;
 const fs = require('fs');
-let _data = require('./lib/data');
-
-//TESTING 
-// @TODO delete this
-_data.delete('test', 'newFile2', err => {
-    if (err) console.log(err);    
-});
-
 
 
 
