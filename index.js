@@ -13,8 +13,7 @@ let _data = require('./lib/data');
 //TESTING 
 // @TODO delete this
 _data.delete('test', 'newFile2', err => {
-    if (err) console.log(err);
-    
+    if (err) console.log(err);    
 });
 
 
