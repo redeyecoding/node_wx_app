@@ -8,6 +8,7 @@ const https = require('https');
 const url = require('url');
 const StringDecoder = require('string_decoder').StringDecoder;
 const fs = require('fs');
+const handlers = require('./lib/handlers');
 
 
 
@@ -175,30 +176,7 @@ let unifiedServer = (( req, res) => {
 
 */
 
-// Setting up handlers
-let handlers = {};
 
-// sample Handler
-handlers.sample = (( data, callback) => {
-    // Callback and http status code and an payload ( an object )
-    callback(406, {'name': 'sample handler'})
-});
-
-// sample foo Handler
-handlers.foo = (( data, callback) => {
-    // Callback and http status code and an payload ( an object )
-    callback(406, {'name': 'HERE IS YOUR FOO HANDLER RESPONSE!'})
-});
-
-// sample Not FOUND Handler (404)
-handlers.notFound = (( data, callback) => {
-    callback(404);    
-});
-
-// Verify server is alive
-handlers.ping = (( data, callback) => {
-    callback(200, { "alive": true });    
-});
 
 
 // Define a request router
@@ -211,8 +189,7 @@ handlers.ping = (( data, callback) => {
                 
         */
 let router = {
-    'sample': handlers.sample,
-    'foo': handlers.foo,
+    'users': handlers.users,
     'ping': handlers.ping
 }
 
