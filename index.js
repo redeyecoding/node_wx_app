@@ -12,10 +12,11 @@ let _data = require('./lib/data');
 
 //TESTING 
 // @TODO delete this
-_data.read('test', 'newFil5e3', ((err, data) => {
+_data.delete('test', 'newFile2', err => {
     if (err) console.log(err);
-    console.log('YOUR DATA: ', data)
-}));
+    
+});
+
 
 
 
