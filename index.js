@@ -8,7 +8,8 @@ const https = require('https');
 const url = require('url');
 const StringDecoder = require('string_decoder').StringDecoder;
 const fs = require('fs');
-const handlers = require('./lib/handlers');
+const handlers = require('./lib/handlers/handlers');
+const helpers = require('./lib/helpers/helpers');
 
 
 
@@ -89,9 +90,7 @@ let unifiedServer = (( req, res) => {
         // On recievig ne data, we're turning that code into a simple Human readable string
             // by dcoding it using utf-8 and then appending it to the buffer
     req.on('data', data => {
-        console.log('[DATA BEFORE DECODING]', data)
         buffer += decoder.write(data);
-        console.log('[DATA AFTER DECODING]', buffer)
     });
 
 
@@ -105,8 +104,8 @@ let unifiedServer = (( req, res) => {
             **** REFER TO COMMENT BELOW (THE ROUTER SECTION ) ON HOW THIS SECTION HANDLES INBOUND REQUESTS*****
         */
         
+        // Verify that the route exists
         let choosenHandler = typeof(router[trimmedPath]) !== 'undefined' ? router[trimmedPath] : handlers.notFound;
-
 
         // contruct the data object to send to the handler
         let data = {
@@ -114,7 +113,7 @@ let unifiedServer = (( req, res) => {
             'queryStringObject': queryStringObject,
             'method' : method,
             'headers': headers,
-            'payload': buffer
+            'payload': helpers.parseJsonToObject(buffer)
         };
 
         // route request to handler
@@ -124,10 +123,9 @@ let unifiedServer = (( req, res) => {
 
             // Use the payload callback by the handler or default to an empty object
             payload = typeof(payload) == 'object' ? payload : {};
-
             // Now we can't send an Object back to the user so we need to convert it to a String
             let payloadString = JSON.stringify(payload);
-
+            
             // Return a Response
                 // we need to sent the User some JSON as a response:
             res.setHeader('Content-Type', 'application/json');
@@ -143,9 +141,13 @@ let unifiedServer = (( req, res) => {
         // res.end('Hello World\n');
 
         // Log the request path
+        // console.log('[PAYLOAD FROM REQ]', typeof(data.payload))
+
+        //console.log('[DATA BEFORE DECODING]', data)
+        //console.log('[DATA AFTER DECODING]', buffer)
         // console.log(`**[REQUEST-OBJECT-INTO-SERVER]**`, req);
         // console.log(`Request is recieved on this path: ${trimmedPath} with this method: "${method}"`);
-        // console.log(`**[QUERYSTING PARAMS SENT]**`, queryStringObject);
+       //    console.log(`**[QUERYSTING PARAMS SENT]**`, queryStringObject);
         // console.log(`**[REQUEST HEADERS RECIEVED]**`, headers);
         // console.log(`**[HERE IS YOUR UN-TRIMMED PATH]**`, path);
         // console.log(`**[HERE IS YOUR TRIMMED PATH]**`, trimmedPath);
@@ -190,7 +192,8 @@ let unifiedServer = (( req, res) => {
         */
 let router = {
     'users': handlers.users,
-    'ping': handlers.ping
+    'ping': handlers.ping,
+   
 }
 
 

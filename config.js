@@ -9,7 +9,8 @@ let enviornment = {};
 enviornment.staging = {
     'httpPort': 3000,
     'httpsPort': 3001,
-    'envName': 'staging'
+    'envName': 'staging',
+    'hashingSecret': 'LKSJDFjwEIJF2#@%j2faksJD0F8AJ3@^@#$jrfj@fj@'
 };
 
 
@@ -17,7 +18,8 @@ enviornment.staging = {
 enviornment.production = {
     'httpPort': 5000,
     'httpsPort': 5001,
-    'envName': 'production'
+    'envName': 'production',
+    'hashingSecret': '54@$@G2EIJF2#@%j2faksJD0F8AJ3@^@#$jrfj@fj@processee3'
 };
 
 // Determine which enviorment was passed as a command-line arg
