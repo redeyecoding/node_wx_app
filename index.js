@@ -193,7 +193,8 @@ let unifiedServer = (( req, res) => {
 let router = {
     'users': handlers.users,
     'ping': handlers.ping,
-    'token': handlers.token
+    'token': handlers.token,
+    'checks': handlers.checks
    
 }
 
