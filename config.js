@@ -10,7 +10,8 @@ enviornment.staging = {
     'httpPort': 3000,
     'httpsPort': 3001,
     'envName': 'staging',
-    'hashingSecret': 'LKSJDFjwEIJF2#@%j2faksJD0F8AJ3@^@#$jrfj@fj@'
+    'hashingSecret': 'LKSJDFjwEIJF2#@%j2faksJD0F8AJ3@^@#$jrfj@fj@',
+    'maxChecks': 5
 };
 
 
@@ -19,7 +20,8 @@ enviornment.production = {
     'httpPort': 5000,
     'httpsPort': 5001,
     'envName': 'production',
-    'hashingSecret': '54@$@G2EIJF2#@%j2faksJD0F8AJ3@^@#$jrfj@fj@processee3'
+    'hashingSecret': '54@$@G2EIJF2#@%j2faksJD0F8AJ3@^@#$jrfj@fj@processee3',
+    'maxChecks': 5
 };
 
 // Determine which enviorment was passed as a command-line arg
