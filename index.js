@@ -12,6 +12,10 @@ const handlers = require('./lib/handlers/handlers');
 const helpers = require('./lib/helpers/helpers');
 
 
+// @TODO GET RIDE OF THIS
+helpers.sendTwilioSms('3475782956', 'Hello from jeff\'s api!!', (err) => {
+    console.log('this was the error: -->  ', err);
+});
 
 // Instantiating the HTTP server
 const httpServer = http.createServer((req, res) => {
@@ -143,11 +147,11 @@ let unifiedServer = (( req, res) => {
         // Log the request path
         // console.log('[PAYLOAD FROM REQ]', typeof(data.payload))
 
-        //console.log('[DATA BEFORE DECODING]', data)
-        //console.log('[DATA AFTER DECODING]', buffer)
+        // console.log('[DATA BEFORE DECODING]', data)
+        // console.log('[DATA AFTER DECODING]', buffer)
         // console.log(`**[REQUEST-OBJECT-INTO-SERVER]**`, req);
         // console.log(`Request is recieved on this path: ${trimmedPath} with this method: "${method}"`);
-       //    console.log(`**[QUERYSTING PARAMS SENT]**`, queryStringObject);
+        // console.log(`**[QUERYSTING PARAMS SENT]**`, queryStringObject);
         // console.log(`**[REQUEST HEADERS RECIEVED]**`, headers);
         // console.log(`**[HERE IS YOUR UN-TRIMMED PATH]**`, path);
         // console.log(`**[HERE IS YOUR TRIMMED PATH]**`, trimmedPath);
@@ -157,7 +161,7 @@ let unifiedServer = (( req, res) => {
  // ****************************************************************************************************
      //            THE ABOVE-- THIS IS HOW WE HANDLE STREAMS IN NODE JS
 // ****************************************************************************************************
-})
+});
 
 
 // ****************************************************************************************************
@@ -196,7 +200,7 @@ let router = {
     'token': handlers.token,
     'checks': handlers.checks
    
-}
+};
 
 
  // ****************************************************************************************************
