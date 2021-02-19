@@ -13,8 +13,8 @@ enviornment.staging = {
     'hashingSecret': 'LKSJDFjwEIJF2#@%j2faksJD0F8AJ3@^@#$jrfj@fj@',
     'maxChecks': 5,
     'twilio':  {
-        'accountSid' : 'AC7c8632a0f02821e220af4066ba58844c',
-        'authToken' : '10f268f23c00f9b826092930e74797ba',
+        'accountSid' : '',
+        'authToken' : '',
         'fromPhone' : '+19852758621'
     }
 };
