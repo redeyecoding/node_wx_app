@@ -15,7 +15,7 @@ enviornment.staging = {
     'twilio':  {
         'accountSid' : '',
         'authToken' : '',
-        'fromPhone' : '+19852758621'
+        'fromPhone' : ''
     }
 };
 
